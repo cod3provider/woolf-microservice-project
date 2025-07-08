@@ -21,6 +21,13 @@ else
     echo "Docker вже встановлений."
 fi
 
+echo "=== Перевірка та встановлення Docker Compose ==="
+if ! docker compose version &> /dev/null; then
+    echo "Будь ласка, переконайся, що у тебе встановлений Docker Desktop, бо Docker Compose встановлюється разом із ним."
+else
+    echo "Docker Compose вже встановлений."
+fi
+
 echo "=== Перевірка та встановлення Django ==="
 if python3 -m django --version &> /dev/null; then
     echo "Django вже встановлений."
