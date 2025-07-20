@@ -1,9 +1,15 @@
-# woolf-microservice-project
+# Terraform AWS Infrastructure — Lesson 5
 
-	# Мій власний мікросервісний проєкт  
-Це репозиторій для навчального проєкту в межах курсу "DevOps CI/CD".  
+## Модулі
 
-## Мета  
-Навчитися основам роботи з Git і GitHub.  
+- **s3-backend**: Створює S3-бакет із версіюванням для Terraform state і DynamoDB для блокування.
+- **vpc**: Створює VPC, 3 публічні підмережі, 3 приватні підмережі, Internet Gateway, NAT Gateway, маршрути.
+- **ecr**: Створює репозиторій ECR для зберігання Docker-образів.
 
+## Команди для запуску
 
+```bash
+terraform init
+terraform plan
+terraform apply
+terraform destroy
