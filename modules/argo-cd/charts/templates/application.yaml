@@ -1,0 +1,26 @@
+{{- range .Values.applications }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .name }}
+  namespace: {{ .namespace | default "argocd" }}
+spec:
+  project: {{ .project | default "default" }}
+  source:
+    repoURL: {{ .source.repoURL | quote }}
+    path: {{ .source.path | quote }}
+    targetRevision: {{ .source.targetRevision | quote }}
+    {{- if .source.helm }}
+    helm:
+      parameters:
+        {{- toYaml .source.parameters | nindent 8 }}
+    {{- end }}
+  destination:
+    server: {{ .destination.server | quote }}
+    namespace: {{ .destination.namespace | quote }}
+  {{- if .syncPolicy }}
+  syncPolicy:
+    {{- toYaml .syncPolicy | nindent 4 }}
+  {{- end }}
+---
+{{- end }}
