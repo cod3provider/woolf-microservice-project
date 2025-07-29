@@ -1,8 +1,8 @@
 replicaCount: 2
 
 image:
-  repository: 518036921225.dkr.ecr.eu-central-1.amazonaws.com/lesson-7-ecr
-  tag: latest
+  repository: 518036921332.dkr.ecr.eu-central-1.amazonaws.com/lesson-7-ecr
+  tag: v1.0.1
   pullPolicy: IfNotPresent
 
 service:
@@ -11,7 +11,7 @@ service:
 
 hpa:
   minReplicas: 1
-  maxReplicas: 2
+  maxReplicas: 3
   cpuThreshold: 70
 
 ingress:
