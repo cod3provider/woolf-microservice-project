@@ -93,5 +93,3 @@ resource "helm_release" "jenkins" {
     file("${path.module}/values.yaml")
   ]
 }
-
-
