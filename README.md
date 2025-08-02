@@ -13,7 +13,7 @@ This project sets up a complete AWS infrastructure using **Terraform**, includin
 
 ## 📁 Project Structure
 
-lesson-8-9/
+lesson-db-module/
 ├── main.tf                 # Main entry point for Terraform modules
 ├── backend.tf              # S3 + DynamoDB backend config
 ├── outputs.tf              # General resource outputs
@@ -37,6 +37,12 @@ lesson-8-9/
 │   │   ├── aws_ebs_csi_driver.tf
 │   │   ├── variables.tf
 │   │   └── outputs.tf
+├── rds/                 # Модуль для RDS
+│   │   ├── rds.tf           # Створення RDS бази даних  
+│   │   ├── aurora.tf        # Створення aurora кластера бази даних  
+│   │   ├── shared.tf        # Спільні ресурси  
+│   │   ├── variables.tf     # Змінні (ресурси, креденшели, values)
+│   │   └── outputs.tf  
 │   ├── jenkins/
 │   │   ├── jenkins.tf
 │   │   ├── variables.tf
@@ -64,9 +70,6 @@ lesson-8-9/
 │                       ├── service.yaml
 │                       ├── configmap.yaml
 │                       ├── hpa.yaml
-│                       ├── postgres-deployment.yaml
-│                       ├── postgres-service.yaml
-│                       └── postgres-pvc.yaml
 
 
 
@@ -141,6 +144,30 @@ lesson-8-9/
 
 ---
 
+### 7. 🚀 **RDS** (`(modules/rds)`)
+- Universal Terraform module for provisioning either a standard RDS instance or an Aurora Cluster.
+- Controlled via the use_aurora variable:
+- true → deploys an Aurora Cluster with a writer instance.
+- false → deploys a standalone RDS instance.
+  - Automatically creates:
+    - DB Subnet Group
+    - Security Group
+      - DB Parameter Group with default parameters:
+      max_connections, log_statement, work_mem
+      - Fully configurable through input variables:
+        engine, engine_version, instance_class, multi_az, etc.
+      - Designed for reusability with minimal changes.
+        
+      **Outputs**:
+
+      db_endpoint – Primary endpoint for RDS or Aurora writer
+      db_name – Name of the created database
+      security_group_id – ID of the security group attached to the DB
+      subnet_group_name – Name of the subnet group used by the DB
+
+---
+
+
 ## ⚙️ Getting Started
 
 ### ✅ Prerequisites
@@ -157,7 +184,7 @@ lesson-8-9/
 #### 1. Navigate to the project directory
 
 ```bash
-cd lesson-8-9
+cd lesson-db-module
 ```
 
 #### 2. Initialize Terraform
