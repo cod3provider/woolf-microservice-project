@@ -12,8 +12,14 @@ spec:
     targetRevision: {{ .source.targetRevision | quote }}
     {{- if .source.helm }}
     helm:
+      {{- if .source.helm.valueFiles }}
+      valueFiles:
+        {{- toYaml .source.helm.valueFiles | nindent 8 }}
+      {{- end }}
+      {{- if .source.helm.parameters }}
       parameters:
-        {{- toYaml .source.parameters | nindent 8 }}
+        {{- toYaml .source.helm.parameters | nindent 8 }}
+      {{- end }}
     {{- end }}
   destination:
     server: {{ .destination.server | quote }}

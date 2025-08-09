@@ -2,7 +2,7 @@
 resource "aws_iam_openid_connect_provider" "oidc" {
   url             = aws_eks_cluster.eks.identity[0].oidc[0].issuer
   client_id_list  = ["sts.amazonaws.com"]
-  thumbprint_list = ["9e99a48a9960b14926bb7f3b02e22da0ecd6c6f9"]
+  thumbprint_list = ["8e88a46a8860b14926bb7f3b02e22da0ecd8c8f7"]
 }
 
 # IAM-Role for EBS CSI Driver

@@ -1,7 +1,7 @@
 
 module "s3_backend" {
   source = "./modules/s3-backend"
-  bucket_name = "terraform-state-bucket-homework-5-007"
+  bucket_name = "terraform-state-bucket-5-ibond-007"
   table_name = "terraform-locks"
 }
 
@@ -12,13 +12,13 @@ module "vpc" {
   public_subnets     = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
   private_subnets    = ["10.0.4.0/24", "10.0.5.0/24", "10.0.6.0/24"]
   availability_zones = ["eu-central-1a", "eu-central-1b", "eu-central-1c"]
-  vpc_name           = "lesson-7-vpc"
+  vpc_name           = "ibond-7-vpc"
 }
 
 
 module "ecr" {
   source      = "./modules/ecr"
-  repository_name    = "lesson-7-ecr/app"
+  repository_name    = "lesson-7-ecr"
   scan_on_push = true
 }
 
@@ -80,7 +80,7 @@ module "argo_cd" {
 
 module "rds" {
   source = "./modules/rds"
-  name                       = "myapp-db"
+  name                       = "myapp-db-ibond"
   use_aurora                 = true
   aurora_instance_count      = 2
 
@@ -99,7 +99,7 @@ module "rds" {
   allocated_storage          = 20
   db_name                    = "myapp"
   username                   = "postgres"
-  password                   = "admin123AWS23"
+  password                   = "adminqweAWS23"
   subnet_private_ids         = module.vpc.private_subnets
   subnet_public_ids          = module.vpc.public_subnets
   publicly_accessible        = true

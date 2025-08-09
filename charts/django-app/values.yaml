@@ -1,7 +1,7 @@
 replicaCount: 2
 
 image:
-  repository: 518036921332.dkr.ecr.eu-central-1.amazonaws.com/lesson-7-ecr
+  repository: 804054839722.dkr.ecr.eu-central-1.amazonaws.com/lesson-7-ecr
   tag: v1.0.1
   pullPolicy: IfNotPresent
 
@@ -18,7 +18,7 @@ ingress:
   enabled: false
 
 config:
-DJANGO_SECRET_KEY: 111112222w33333333qwerty12
+DJANGO_SECRET_KEY: 111111111233333333qwerty12
 DEBUG: "True"
 DJANGO_LOGLEVEL: info
 DJANGO_ALLOWED_HOSTS: "localhost, nginx"
