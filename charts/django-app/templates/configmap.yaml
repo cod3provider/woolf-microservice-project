@@ -3,6 +3,6 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-config
 data:
-  {{- range $key, $val := .Values.config }}
-  {{ $key }}: {{ $val | quote }}
-  {{- end }}
+  {{- range $key, $value := .Values.config }}
+    {{ $key }}: {{ $value | quote }}
+    {{- end }}

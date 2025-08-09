@@ -1,4 +1,4 @@
-# 📦 lesson-8-9 — AWS Infrastructure with Terraform
+# 📦 final-project — AWS Infrastructure with Terraform
 
 This project sets up a complete AWS infrastructure using **Terraform**, including the following components:
 
@@ -17,38 +17,45 @@ lesson-db-module/
 ├── main.tf                 # Main entry point for Terraform modules
 ├── backend.tf              # S3 + DynamoDB backend config
 ├── outputs.tf              # General resource outputs
+│
 ├── modules/
 │   ├── s3-backend/
 │   │   ├── s3.tf
 │   │   ├── dynamodb.tf
 │   │   ├── variables.tf
 │   │   └── outputs.tf
+│
 │   ├── vpc/
 │   │   ├── vpc.tf
 │   │   ├── routes.tf
 │   │   ├── variables.tf
 │   │   └── outputs.tf
+│
 │   ├── ecr/
 │   │   ├── ecr.tf
 │   │   ├── variables.tf
 │   │   └── outputs.tf
+│
 │   ├── eks/
 │   │   ├── eks.tf
 │   │   ├── aws_ebs_csi_driver.tf
 │   │   ├── variables.tf
 │   │   └── outputs.tf
+│
 ├── rds/                 # Модуль для RDS
 │   │   ├── rds.tf           # Створення RDS бази даних  
 │   │   ├── aurora.tf        # Створення aurora кластера бази даних  
 │   │   ├── shared.tf        # Спільні ресурси  
 │   │   ├── variables.tf     # Змінні (ресурси, креденшели, values)
 │   │   └── outputs.tf  
+│
 │   ├── jenkins/
 │   │   ├── jenkins.tf
 │   │   ├── variables.tf
 │   │   ├── providers.tf
 │   │   ├── values.yaml
 │   │   └── outputs.tf
+│   │
 │   └── argo_cd/
 │       ├── argo.tf
 │       ├── variables.tf

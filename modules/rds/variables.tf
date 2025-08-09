@@ -1,5 +1,5 @@
 variable "name" {
-  description = "Назва інстансу або кластера"
+  description = "Name of instance or cluster"
   type        = string
 }
 
